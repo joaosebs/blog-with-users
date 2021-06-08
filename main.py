@@ -10,7 +10,6 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
 
-# Requires installation of python-dotenv, to be able to access the .env file with the os module
 from dotenv import load_dotenv
 import os
 
