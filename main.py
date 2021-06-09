@@ -31,12 +31,13 @@ gravatar = Gravatar(app,
 ##CONNECT TO DB
 
 # To connect to SQLite database:
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+### app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 
-#To connect to Heroku Postgres Database, you have to: 1- in the dashboard, request the Postgres add-on.
+# To connect to Heroku Postgres Database, you have to: 1- in the dashboard, request the Postgres add-on.
 # 2- Check config vars in Settings. 3- get your code to access that Postgres database, like it is in the environment.
 # 4- install the psycopg2-binary in your python code, and add it to the requirements.
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///blog.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
