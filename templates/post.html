@@ -35,10 +35,10 @@
                 
                 
                 <!--           Comments Area -->
+                {{ ckeditor.load() }}
+                {{ ckeditor.config(name='text') }}
+                {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
                 <div class="col-lg-8 col-md-10 mx-auto comment">
-                    {{ ckeditor.load() }}
-                    {{ ckeditor.config(name='text') }}
-                    {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
                     <ul class="commentList">
                         {% for cmt in comments %}
                         <li>
