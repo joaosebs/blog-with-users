@@ -14,6 +14,8 @@ from dotenv import load_dotenv
 import os
 
 ##SETS UP FLASK AND ITS DEPENDANTS
+# In Procfile, type "web: gunicorn main:app". This tells gunicorn to look up in main.py where my app is, so it can
+# "translate" it into readable stuff by heroku, who will receive it as an http request.
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY')
 ckeditor = CKEditor(app)
@@ -164,7 +166,6 @@ def logout():
 #    definition must allow for one argument with the same var_name.
 @app.route("/post/<int:post_id>", methods=['GET', 'POST'])
 def show_post(post_id):
-
     # Access the requested post, and all its associated comments
     requested_post = BlogPost.query.get(post_id)
     comments = Comment.query.filter_by(post_id=post_id)
